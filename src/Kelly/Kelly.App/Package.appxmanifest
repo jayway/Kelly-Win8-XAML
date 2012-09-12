@@ -1,39 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-
-  <Identity Name="121b724a-61e2-44a0-a3f5-f45b34658a8e"
-            Publisher="CN=Andreas"
-            Version="1.0.0.0" />
-
+  <Identity Name="121b724a-61e2-44a0-a3f5-f45b34658a8e" Publisher="CN=Andreas" Version="1.0.0.0" />
   <Properties>
     <DisplayName>Kelly.App</DisplayName>
     <PublisherDisplayName>Andreas</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.2.1</OSMinVersion>
     <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="Kelly.App.App">
-        <VisualElements
-            DisplayName="Kelly.App"
-            Logo="Assets\Logo.png"
-            SmallLogo="Assets\SmallLogo.png"
-            Description="Kelly.App"
-            ForegroundText="light"
-            BackgroundColor="#464646">
-            <DefaultTile ShowName="allLogos" />
-            <SplashScreen Image="Assets\SplashScreen.png" />
-        </VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Kelly.App.App">
+      <VisualElements DisplayName="Kelly.App" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Kelly.App" ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+        <InitialRotationPreference>
+          <Rotation Preference="portrait" />
+          <Rotation Preference="landscape" />
+        </InitialRotationPreference>
+      </VisualElements>
     </Application>
   </Applications>
   <Capabilities>
