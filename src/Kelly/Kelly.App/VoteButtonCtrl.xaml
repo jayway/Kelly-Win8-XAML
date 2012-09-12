@@ -7,11 +7,28 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
+	<UserControl.Resources>
+		<Storyboard x:Name="HighlightRect">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="highlightRect">
+				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<QuarticEase/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
     
     <Grid>
         <Rectangle 
             x:Name="rect" 
-            Fill="{Binding Background, ElementName=userControl}" Tapped="rect_Tapped"/>
+            Fill="{Binding Background, ElementName=userControl}"/>
+        <Rectangle 
+            x:Name="highlightRect" 
+            Fill="#FFF4F4F5" 
+            Opacity="0"
+            Tapped="rect_Tapped"/>
 
     </Grid>
 </UserControl>

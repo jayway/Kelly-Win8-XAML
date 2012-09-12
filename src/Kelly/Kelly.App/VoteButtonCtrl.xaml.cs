@@ -25,7 +25,8 @@ namespace Kelly.App
 
         private void rect_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            //HighlightRect.Seek(TimeSpan.FromMilliseconds(0));
+            HighlightRect.Begin();
         }
     }
 }
