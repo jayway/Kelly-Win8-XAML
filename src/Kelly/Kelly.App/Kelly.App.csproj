@@ -101,7 +101,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="DataModel\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -120,6 +119,7 @@
     <Compile Include="Common\LayoutAwarePage.cs" />
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="ViewModels\MainPageVM.cs" />
     <Compile Include="VoteButtonCtrl.xaml.cs">
       <DependentUpon>VoteButtonCtrl.xaml</DependentUpon>
     </Compile>
@@ -130,6 +130,7 @@
     </AppxManifest>
     <None Include="Common\ReadMe.txt" />
     <None Include="Kelly.App_TemporaryKey.pfx" />
+    <PRIResource Include="Resources\AppRes.resw" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.png" />

@@ -25,8 +25,21 @@ namespace Kelly.App
 
         private void rect_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            Increment();
             //HighlightRect.Seek(TimeSpan.FromMilliseconds(0));
             HighlightRect.Begin();
         }
+
+        public void Increment()
+        {
+            NbrVotes++;
+        }
+
+        public void Reset()
+        {
+            NbrVotes = 0;
+        }
+
+        public int NbrVotes { get; set; }
     }
 }

@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using Windows.ApplicationModel.Resources;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
 
 // The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
@@ -12,8 +17,11 @@ namespace Kelly.App
     /// </summary>
     public sealed partial class MainPage : Kelly.App.Common.LayoutAwarePage
     {
+        private ResourceLoader _resourceLoader;
+
         public MainPage()
         {
+            _resourceLoader = new ResourceLoader("AppRes");
             this.InitializeComponent();
         }
 
@@ -60,6 +68,26 @@ namespace Kelly.App
             // by passing required information as a navigation parameter
             //var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
             //this.Frame.Navigate(typeof(ItemDetailPage), itemId);
+        }
+
+        private async void ShowSummaryButton_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            var summaryText = CreateSummaryText();
+            var dialog = new MessageDialog(summaryText, _resourceLoader.GetString("SummaryTitle"));
+            var result = await dialog.ShowAsync();
+        }
+
+        private string CreateSummaryText()
+        {
+            var builder = new StringBuilder();
+            foreach (var child in votingGrid.Children)
+            {
+                var ctrl = child as VoteButtonCtrl;
+                if (ctrl == null) continue;
+
+                builder.AppendLine(string.Format("{0}: {1}", ctrl.Name, ctrl.NbrVotes));
+            }
+            return builder.ToString();
         }
     }
 }
