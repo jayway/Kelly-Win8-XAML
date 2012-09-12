@@ -1,8 +1,11 @@
 ﻿using Kelly.App.Common;
-
 using System;
+using Kelly.App.Resources;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
+using Windows.UI.ApplicationSettings;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -23,7 +26,34 @@ namespace Kelly.App
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            
         }
+
+        private void SettingsCommandsRequested(SettingsPane sender,
+                                SettingsPaneCommandsRequestedEventArgs args)
+        {
+            SettingsCommand generalCommand =
+                          new SettingsCommand(Constants.SETTINGS_COMMAND_ID,
+                                              Res.Instance.GetString("SettingsTitle"),
+                                              new UICommandInvokedHandler(OnSettingsCommand));
+            args.Request.ApplicationCommands.Add(generalCommand);
+        }
+
+        public void OnSettingsCommand(IUICommand command)
+        {
+            // Show the SettingsPane by changing its margin. A defined animation will be applied
+            object curPage = ((Frame)(Window.Current.Content)).Content;
+
+            switch (curPage.GetType().Name)
+            {
+                case "MainPage":
+                    ((MainPage)curPage).ShowSettingsPanel();
+                    break;
+                default:
+                    break;
+            }
+        }
+
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -34,6 +64,8 @@ namespace Kelly.App
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
             Frame rootFrame = Window.Current.Content as Frame;
+
+            SettingsPane.GetForCurrentView().CommandsRequested += new TypedEventHandler<SettingsPane, SettingsPaneCommandsRequestedEventArgs>(SettingsCommandsRequested);
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
@@ -88,6 +120,11 @@ namespace Kelly.App
             var deferral = e.SuspendingOperation.GetDeferral();
             await SuspensionManager.SaveAsync();
             deferral.Complete();
+        }
+
+        public void UpdateTitle()
+        {
+            
         }
     }
 }

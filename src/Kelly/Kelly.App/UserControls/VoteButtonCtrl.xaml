@@ -1,5 +1,5 @@
 ﻿<UserControl x:Name="userControl"
-    x:Class="Kelly.App.VoteButtonCtrl"
+    x:Class="Kelly.App.UserControls.VoteButtonCtrl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -11,9 +11,9 @@
 		<Storyboard x:Name="HighlightRect">
 			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="highlightRect">
 				<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-				<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
 					<EasingDoubleKeyFrame.EasingFunction>
-						<QuarticEase/>
+						<PowerEase/>
 					</EasingDoubleKeyFrame.EasingFunction>
 				</EasingDoubleKeyFrame>
 			</DoubleAnimationUsingKeyFrames>
@@ -26,9 +26,8 @@
             Fill="{Binding Background, ElementName=userControl}"/>
         <Rectangle 
             x:Name="highlightRect" 
-            Fill="#FFF4F4F5" 
             Opacity="0"
-            Tapped="rect_Tapped"/>
+            Tapped="rect_Tapped" Fill="#FFF4F4F5"/>
 
     </Grid>
 </UserControl>

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Windows.ApplicationModel.Resources;
+using Kelly.App.Resources;
+using Kelly.App.UserControls;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 
 // The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
@@ -17,11 +17,8 @@ namespace Kelly.App
     /// </summary>
     public sealed partial class MainPage : Kelly.App.Common.LayoutAwarePage
     {
-        private ResourceLoader _resourceLoader;
-
         public MainPage()
         {
-            _resourceLoader = new ResourceLoader("AppRes");
             this.InitializeComponent();
         }
 
@@ -73,8 +70,23 @@ namespace Kelly.App
         private async void ShowSummaryButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
             var summaryText = CreateSummaryText();
-            var dialog = new MessageDialog(summaryText, _resourceLoader.GetString("SummaryTitle"));
+            var dialog = new MessageDialog(summaryText, Res.Instance.GetString("SummaryTitle"));
             var result = await dialog.ShowAsync();
+        }
+
+        public void ShowSettingsPanel()
+        {
+            Thickness th = new Thickness(0);
+            settingsCtrl.Margin = th;
+            settingsCtrl.Visibility = Visibility.Visible;
+            settingsCtrl.Initialize(_viewModel);
+            // PointerPressed dismisses SettingsPanel
+            this.PointerPressed += new PointerEventHandler(HideSettingsPanel);
+        }
+        private void HideSettingsPanel(object sender, PointerRoutedEventArgs e)
+        {
+            settingsCtrl.Visibility = Visibility.Collapsed;
+            this.PointerPressed -= new PointerEventHandler(HideSettingsPanel);
         }
 
         private string CreateSummaryText()
