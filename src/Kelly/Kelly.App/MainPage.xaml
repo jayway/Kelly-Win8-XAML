@@ -64,7 +64,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="pageTitle" Text="{Binding Title}" Grid.Column="1" IsHitTestVisible="false" 
-                       Style="{StaticResource PageHeaderTextStyle}" Margin="0,60,30,40"/>
+                       Style="{StaticResource PageHeaderTextStyle}" Margin="-2,60,30,40"/>
             <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,11,-2,0">
             	<TextBlock x:Uid="MainPage_PoweredBy" TextWrapping="NoWrap" Text="powered by" 
 				Style="{StaticResource SubheaderTextStyle}" VerticalAlignment="Bottom" Margin="0,0,10,26"/>
