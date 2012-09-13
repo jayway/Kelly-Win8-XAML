@@ -99,6 +99,7 @@ namespace Kelly.App
         private void ResetCountButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
             ForEachVoteButton(ctrl => ctrl.Reset());
+            ShowAndFadeOutCountersResetText.Begin();
         }
 
         private void ForEachVoteButton(Action<VoteButtonCtrl> forEachAction)
