@@ -92,14 +92,24 @@ namespace Kelly.App
         private string CreateSummaryText()
         {
             var builder = new StringBuilder();
+            ForEachVoteButton(ctrl => builder.AppendLine(string.Format("{0}: {1}", ctrl.Name, ctrl.NbrVotes)));
+            return builder.ToString();
+        }
+
+        private void ResetCountButton_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            ForEachVoteButton(ctrl => ctrl.Reset());
+        }
+
+        private void ForEachVoteButton(Action<VoteButtonCtrl> forEachAction)
+        {
             foreach (var child in votingGrid.Children)
             {
                 var ctrl = child as VoteButtonCtrl;
                 if (ctrl == null) continue;
 
-                builder.AppendLine(string.Format("{0}: {1}", ctrl.Name, ctrl.NbrVotes));
+                forEachAction(ctrl);
             }
-            return builder.ToString();
         }
     }
 }
