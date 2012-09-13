@@ -58,13 +58,18 @@
         <!-- Vertical scrolling list only used when snapped -->
 
         <!-- Back button and page title -->
-        <Grid x:Name="titleGrid" Margin="40,0,0,0">
+        <Grid x:Name="titleGrid" Margin="100,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="pageTitle" Text="{Binding Title}" Grid.Column="1" IsHitTestVisible="false" 
-                       Style="{StaticResource PageHeaderTextStyle}" Margin="40,60,30,40"/>
+                       Style="{StaticResource PageHeaderTextStyle}" Margin="0,60,30,40"/>
+            <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,11,-2,0">
+            	<TextBlock x:Uid="MainPage_PoweredBy" TextWrapping="NoWrap" Text="powered by" 
+				Style="{StaticResource SubheaderTextStyle}" VerticalAlignment="Bottom" Margin="0,0,10,26"/>
+            	<Image HorizontalAlignment="Right" Source="Assets/jayway_white_transparent.png" Height="100" Margin="0,0,-14,0"/>
+            </StackPanel>
         </Grid>
         <Grid x:Name="votingGrid" Grid.Row="1" Margin="40">
             <Grid.RowDefinitions>

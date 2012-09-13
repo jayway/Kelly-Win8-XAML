@@ -8,7 +8,7 @@
     d:DesignHeight="700"
     d:DesignWidth="400">
     <Grid Style="{StaticResource LayoutRootStyle}">
-        <StackPanel Width="346" Margin="20,100,0,0">
+        <StackPanel Width="346" Margin="20,100,20,20">
             <TextBlock x:Uid="SettingsCtrl_VoteTitleHeader" 
                    TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Style="{StaticResource GroupHeaderTextStyle}"/>
             <TextBox 

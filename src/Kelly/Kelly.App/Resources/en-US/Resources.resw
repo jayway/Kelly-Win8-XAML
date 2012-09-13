@@ -123,6 +123,9 @@
   <data name="MainPageAppBar_CountReset.Text" xml:space="preserve">
     <value>All counters reset</value>
   </data>
+  <data name="MainPage_PoweredBy.Text" xml:space="preserve">
+    <value>powered by</value>
+  </data>
   <data name="SettingsCtrl_VoteTitleHeader.Text" xml:space="preserve">
     <value>Vote Title</value>
   </data>

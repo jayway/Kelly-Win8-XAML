@@ -123,6 +123,9 @@
   <data name="MainPageAppBar_CountReset.Text" xml:space="preserve">
     <value>Räknarna nollställdes</value>
   </data>
+  <data name="MainPage_PoweredBy" xml:space="preserve">
+    <value>skapat av</value>
+  </data>
   <data name="SettingsCtrl_VoteTitleHeader.Text" xml:space="preserve">
     <value>Rubrik</value>
   </data>
