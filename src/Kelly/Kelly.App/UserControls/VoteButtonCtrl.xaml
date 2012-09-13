@@ -20,14 +20,19 @@
 		</Storyboard>
 	</UserControl.Resources>
     
-    <Grid>
-        <Rectangle 
-            x:Name="rect" 
-            Fill="{Binding Background, ElementName=userControl}"/>
-        <Rectangle 
-            x:Name="highlightRect" 
-            Opacity="0"
-            Tapped="rect_Tapped" Fill="#FFF4F4F5"/>
+        <Button x:Name="button" 
+			HorizontalAlignment="Stretch" 
+			VerticalAlignment="Stretch" BorderBrush="{x:Null}" Foreground="{x:Null}" Tapped="button_Tapped">
+			<Grid 
+				Width="{Binding ActualWidth, ElementName=button}" 
+				Height="{Binding ActualHeight, ElementName=button, Mode=OneWay}">
+				<Rectangle 
+					x:Name="rect" Fill="{Binding Background, ElementName=userControl}"/>
+				<Rectangle 
+					x:Name="highlightRect" 
+					Opacity="0"
+					Fill="#FFF4F4F5"/>
 
-    </Grid>
+			</Grid>
+	</Button>
 </UserControl>
