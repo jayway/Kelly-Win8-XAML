@@ -31,13 +31,18 @@
                     <!--<Setter Property="FontSize" Value="24"/>-->
                 </Style>
             </AppBar.Resources>
-            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                <Button x:Name="ShowSummaryButton" Content="∑" Tapped="ShowSummaryButton_OnTapped"/>
-                <Button x:Name="ResetCountButton" Content="" Tapped="ResetCountButton_OnTapped"/>
-                <TextBlock x:Name="textBlock" 
-                    x:Uid="MainPageAppBar_CountReset" TextWrapping="Wrap" Text="TextBlock" Style="{StaticResource SubheaderTextStyle}" 
-                    Margin="0,10,0,0" Opacity="0"/>
-            </StackPanel>
+            <Grid>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button x:Name="ShowSummaryButton" Content="∑" Tapped="ShowSummaryButton_OnTapped"/>
+                    <Button x:Name="ResetCountButton" Content="&#xE10A;" Tapped="ResetCountButton_OnTapped"/>
+                    <TextBlock x:Name="textBlock" 
+        				x:Uid="MainPageAppBar_CountReset" TextWrapping="Wrap" Text="TextBlock" Style="{StaticResource SubheaderTextStyle}" 
+        				Margin="0,10,0,0" Opacity="0"/>
+                </StackPanel>
+
+                <Button x:Name="ShowHistoryButton" Content="" Tapped="ShowHistoryButton_OnTapped" HorizontalAlignment="Right"/>
+
+            </Grid>
         </AppBar>
     </common:LayoutAwarePage.BottomAppBar>
 
