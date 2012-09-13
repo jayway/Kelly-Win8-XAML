@@ -86,7 +86,12 @@ namespace Kelly.App
 
         private void ShowHistoryButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            
+            RunShowHistoryCommandSinceICommandWontWork();
+        }
+
+        private void RunShowHistoryCommandSinceICommandWontWork()
+        {
+            _viewModel.ShowHistory.Execute(null);
         }
     }
 }

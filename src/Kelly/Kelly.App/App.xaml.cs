@@ -1,6 +1,7 @@
 ﻿using Kelly.App.Common;
 using System;
 using Kelly.App.Resources;
+using Kelly.App.ViewModels;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -94,6 +95,9 @@ namespace Kelly.App
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
+
+            Navigate.Init(rootFrame);
+
             if (rootFrame.Content == null)
             {
                 // When the navigation stack isn't restored navigate to the first page,

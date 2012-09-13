@@ -1,4 +1,5 @@
-﻿using Kelly.App.Common;
+﻿using System.Windows.Input;
+using Kelly.App.Common;
 using Kelly.App.Resources;
 using Windows.Storage;
 
@@ -8,6 +9,8 @@ namespace Kelly.App.ViewModels
     {
         public MainPageVM()
         {
+            ShowHistory = new ShowHistoryCommand();
+
             var voteTitle = ApplicationData.Current.RoamingSettings.Values[Constants.VOTE_TITLE_SETTINGS_KEY] as string;
             if (string.IsNullOrEmpty(voteTitle))
             {
@@ -23,5 +26,6 @@ namespace Kelly.App.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        public ICommand ShowHistory { get; set; }
     }
 }

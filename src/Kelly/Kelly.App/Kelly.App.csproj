@@ -126,10 +126,15 @@
     <Compile Include="UserControls\SettingsCtrl.xaml.cs">
       <DependentUpon>SettingsCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\HistoryPageVM.cs" />
     <Compile Include="ViewModels\MainPageVM.cs" />
     <Compile Include="UserControls\VoteButtonCtrl.xaml.cs">
       <DependentUpon>VoteButtonCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Navigate.cs" />
+    <Compile Include="ViewModels\ShowHistoryCommand.cs" />
+    <Compile Include="VoteSet.cs" />
+    <Compile Include="VoteSetRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

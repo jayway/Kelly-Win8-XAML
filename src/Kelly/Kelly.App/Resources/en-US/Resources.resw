@@ -120,6 +120,9 @@
   <data name="DefaultVoteTitle" xml:space="preserve">
     <value>Vote Here</value>
   </data>
+  <data name="HistoryPage_Title.Text" xml:space="preserve">
+    <value>History</value>
+  </data>
   <data name="MainPageAppBar_CountReset.Text" xml:space="preserve">
     <value>All counters reset</value>
   </data>

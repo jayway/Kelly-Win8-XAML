@@ -7,7 +7,8 @@
     xmlns:common="using:Kelly.App.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:App="using:Kelly.App"
-    xmlns:UserControls="using:Kelly.App.UserControls" xmlns:ViewModels="using:Kelly.App.ViewModels" mc:Ignorable="d">
+    xmlns:UserControls="using:Kelly.App.UserControls" xmlns:ViewModels="using:Kelly.App.ViewModels" mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance Type=ViewModels:MainPageVM, IsDesignTimeCreatable=True}">
 
     <Page.Resources>
         <ViewModels:MainPageVM x:Name="_viewModel"/>
@@ -40,7 +41,10 @@
         				Margin="0,10,0,0" Opacity="0"/>
                 </StackPanel>
 
-                <Button x:Name="ShowHistoryButton" Content="" Tapped="ShowHistoryButton_OnTapped" HorizontalAlignment="Right"/>
+                <Button x:Name="ShowHistoryButton" Content="" 
+                        HorizontalAlignment="Right" 
+                        Command="{Binding ShowHistory}"
+                        Tapped="ShowHistoryButton_OnTapped"/>
 
             </Grid>
         </AppBar>
