@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using Kelly.App.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -32,6 +33,8 @@ namespace Kelly.App
             //// TODO: Create an appropriate data model for your problem domain to replace the sample data
             //var sampleDataGroups = SampleDataSource.GetGroups((String)navigationParameter);
             //this.DefaultViewModel["Groups"] = sampleDataGroups;
+            
+            //(DataContext as HistoryPageVM).Init();
         }
 
         /// <summary>

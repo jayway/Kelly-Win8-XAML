@@ -123,6 +123,9 @@
   <data name="HistoryPage_Title.Text" xml:space="preserve">
     <value>Historik</value>
   </data>
+  <data name="IsRunningText" xml:space="preserve">
+    <value>Är igång nu</value>
+  </data>
   <data name="MainPageAppBar_CountReset.Text" xml:space="preserve">
     <value>Räknarna nollställdes</value>
   </data>

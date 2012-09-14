@@ -69,8 +69,17 @@ namespace Kelly.App
 
         private void ResetCountButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
+            PutVoteSetInHistory();
             ForEachVoteButton(ctrl => ctrl.Reset());
             ShowAndFadeOutCountersResetText.Begin();
+        }
+
+        private void PutVoteSetInHistory()
+        {
+            var voteSet = GetCurrentVoteSet();
+            voteSet.EndNow();
+            _viewModel.Reset();
+            VoteSetRepo.Instance.Ensure(voteSet);
         }
 
         private void ForEachVoteButton(Action<VoteButtonCtrl> forEachAction)
@@ -91,7 +100,21 @@ namespace Kelly.App
 
         private void RunShowHistoryCommandSinceICommandWontWork()
         {
+            VoteSet voteSet = GetCurrentVoteSet();
+            VoteSetRepo.Instance.Ensure(voteSet);
             _viewModel.ShowHistory.Execute(null);
+        }
+
+        private VoteSet GetCurrentVoteSet()
+        {
+            return new VoteSet
+                       {
+                           StartTime = _viewModel.StartTime,
+                           RedCount = Red.NbrVotes,
+                           YellowCount = Yellow.NbrVotes,
+                           GreenCount = Green.NbrVotes,
+                           Title = _viewModel.Title
+                       };
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Kelly.App.ViewModels
         public HistoryPageVM()
         {
             VoteSets = new ObservableCollection<VoteSet>();
+            Init();
 #if DEBUG
             if (DesignMode.DesignModeEnabled)
             {
@@ -39,7 +40,7 @@ namespace Kelly.App.ViewModels
                     EndTime = DateTime.Now,
                     RedCount = 5,
                     GreenCount = 0,
-                    YellowCount = 100,
+                    YellowCount = 900,
                     HasEnded = true,
                     Title = "Session that has ended"
                 });
@@ -57,5 +58,13 @@ namespace Kelly.App.ViewModels
         }
 
         public ObservableCollection<VoteSet> VoteSets { get; set; }
+
+        public void Init()
+        {
+            foreach (var voteSet in VoteSetRepo.Instance.AllSets)
+            {
+                VoteSets.Add(voteSet);
+            }
+        }
     }
 }

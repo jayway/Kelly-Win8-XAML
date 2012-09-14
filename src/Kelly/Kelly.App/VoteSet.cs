@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Kelly.App.Resources;
 
 namespace Kelly.App
 {
@@ -26,5 +27,13 @@ namespace Kelly.App
 
         [DataMember]
         public int GreenCount { get; set; }
+
+        public string IsRunningText { get { return !HasEnded ? Res.Instance.GetString("IsRunningText") : string.Empty;  } }
+
+        public void EndNow()
+        {
+            EndTime = DateTime.Now;
+            HasEnded = true;
+        }
     }
 }

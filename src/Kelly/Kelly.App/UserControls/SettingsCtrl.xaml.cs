@@ -21,7 +21,7 @@ namespace Kelly.App.UserControls
 
         private void voteTitleTextBox_KeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
-            ((MainPageVM) DataContext).Title = voteTitleTextBox.Text;
+            ((MainPageVM) DataContext).SetTitle(voteTitleTextBox.Text);
             ApplicationData.Current.RoamingSettings.Values[Constants.VOTE_TITLE_SETTINGS_KEY] = ((TextBox)sender).Text;
         }
     }

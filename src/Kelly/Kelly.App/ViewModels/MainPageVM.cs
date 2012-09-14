@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using Kelly.App.Common;
 using Kelly.App.Resources;
 using Windows.Storage;
@@ -17,9 +18,12 @@ namespace Kelly.App.ViewModels
                 voteTitle = Res.Instance.GetString("DefaultVoteTitle");
             }
             Title = voteTitle;
+            Reset();
         }
 
         private string _title;
+        private DateTime _startTime;
+
         public string Title
         {
             get { return _title; }
@@ -27,5 +31,21 @@ namespace Kelly.App.ViewModels
         }
 
         public ICommand ShowHistory { get; set; }
+
+        public DateTime StartTime
+        {
+            get { return _startTime; }
+            set { _startTime = value; }
+        }
+
+        public void SetTitle(string text)
+        {
+            Title = text;
+        }
+
+        public void Reset()
+        {
+            _startTime = DateTime.Now;
+        }
     }
 }
