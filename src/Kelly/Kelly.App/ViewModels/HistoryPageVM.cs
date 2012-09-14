@@ -25,6 +25,26 @@ namespace Kelly.App.ViewModels
                 });
                 VoteSets.Add(new VoteSet()
                 {
+                    StartTime = DateTime.Now.AddHours(-1),
+                    EndTime = DateTime.Now,
+                    RedCount = 5,
+                    GreenCount = 0,
+                    YellowCount = 100,
+                    HasEnded = true,
+                    Title = "Session that has ended"
+                });
+                VoteSets.Add(new VoteSet()
+                {
+                    StartTime = DateTime.Now.AddHours(-1),
+                    EndTime = DateTime.Now,
+                    RedCount = 5,
+                    GreenCount = 0,
+                    YellowCount = 100,
+                    HasEnded = true,
+                    Title = "Session that has ended"
+                });
+                VoteSets.Add(new VoteSet()
+                {
                     StartTime = DateTime.Now,
                     RedCount = 1,
                     GreenCount = 1,
