@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Input;
 using Kelly.App.Common;
 using Kelly.App.Resources;
@@ -17,8 +18,19 @@ namespace Kelly.App.ViewModels
             {
                 voteTitle = Res.Instance.GetString("DefaultVoteTitle");
             }
+            
+            
             Title = voteTitle;
-            Reset();
+
+            var runningSet = VoteSetRepo.Instance.AllSets.FirstOrDefault(x => !x.HasEnded);
+            if (runningSet == null)
+            {
+                Reset();
+            }
+            else
+            {
+                StartTime = runningSet.StartTime;
+            }
         }
 
         private string _title;
