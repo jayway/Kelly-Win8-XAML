@@ -15,6 +15,13 @@ namespace Kelly.App.ViewModels
             Navigate.ToHistoryPage();
         }
 
+        protected void OnCanExecuteChanged()
+        {
+            var ev = CanExecuteChanged;
+            if (ev == null) return;
+            ev(this, EventArgs.Empty);
+        }
+
         public event EventHandler CanExecuteChanged;
     }
 }
