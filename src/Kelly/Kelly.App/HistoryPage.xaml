@@ -80,21 +80,21 @@
                             VerticalAlignment="Bottom" 
                             Background="{StaticResource ListViewItemOverlayBackgroundThemeBrush}"
                             >
-                            <TextBlock 
+                            <TextBlock x:Name="Title" 
                                 Text="{Binding Title}" 
                                 Foreground="{StaticResource ListViewItemOverlayForegroundThemeBrush}" 
-                                Style="{StaticResource TitleTextStyle}" Margin="15,0,15,15"/>
-                            <TextBlock 
+                                Style="{StaticResource TitleTextStyle}" Margin="15,15,15,5"/>
+                            <TextBlock x:Name="StartTime" 
                                 Text="{Binding StartTime}" 
                                 Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" 
-                                Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
-                            <Grid Margin="15,0,15,0">
-                                <TextBlock 
+                                Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,5"/>
+                            <Grid Margin="15,0,15,15">
+                                <TextBlock x:Name="EndTime" 
                             		Text="{Binding EndTime}" 
                             		Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" 
                             		Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" 
                                     HorizontalAlignment="Left"/>
-                                <TextBlock 
+                                <TextBlock x:Name="IsRunningText" 
                             		Text="{Binding IsRunningText}" 
                             		Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" 
                             		Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" 
