@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
@@ -12,23 +13,20 @@ namespace Kelly.App.UserControls
             InitializeComponent();
         }
 
-        public void Increment()
+        private void button_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
+            //HighlightRect.Seek(TimeSpan.FromMilliseconds(0));
+            HighlightRect.Begin();
             NbrVotes++;
         }
 
-        public void Reset()
-        {
-            NbrVotes = 0;
-        }
+        public static readonly DependencyProperty NbrVotesProperty =
+            DependencyProperty.Register("NbrVotes", typeof (int), typeof (VoteButtonCtrl), new PropertyMetadata(default(int)));
 
-        public int NbrVotes { get; set; }
-
-        private void button_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        public int NbrVotes
         {
-			Increment();
-            //HighlightRect.Seek(TimeSpan.FromMilliseconds(0));
-            HighlightRect.Begin();
+            get { return (int) GetValue(NbrVotesProperty); }
+            set { SetValue(NbrVotesProperty, value); }
         }
     }
 }

@@ -99,9 +99,9 @@
                     <Setter Property="Margin" Value="40"/>
                 </Style>
             </Grid.Resources>
-            <UserControls:VoteButtonCtrl x:Name="Red" Background="Red"/>
-            <UserControls:VoteButtonCtrl x:Name="Yellow" Background="Yellow" Grid.Column="1"/>
-            <UserControls:VoteButtonCtrl x:Name="Green" Background="Green" Grid.Column="2"/>
+            <UserControls:VoteButtonCtrl x:Name="Red" Background="Red" NbrVotes="{Binding VoteSet.RedCount, Mode=TwoWay}"/>
+            <UserControls:VoteButtonCtrl x:Name="Yellow" Background="Yellow" Grid.Column="1" NbrVotes="{Binding VoteSet.YellowCount, Mode=TwoWay}"/>
+            <UserControls:VoteButtonCtrl x:Name="Green" Background="Green" Grid.Column="2" NbrVotes="{Binding VoteSet.GreenCount, Mode=TwoWay}"/>
         </Grid>
         <UserControls:SettingsCtrl
             x:Name="settingsCtrl"

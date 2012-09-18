@@ -18,7 +18,7 @@ namespace Kelly.App.ViewModels
             {
                 voteTitle = Res.Instance.GetString("DefaultVoteTitle");
             }
-            
+
             
             Title = voteTitle;
 
@@ -29,12 +29,19 @@ namespace Kelly.App.ViewModels
             }
             else
             {
-                StartTime = runningSet.StartTime;
+                VoteSet = runningSet;
+                Title = runningSet.Title;
             }
         }
 
+        public VoteSet VoteSet
+        {
+            get { return _voteSet; }
+            set { SetProperty(ref _voteSet, value); }
+        }
+
         private string _title;
-        private DateTime _startTime;
+        private VoteSet _voteSet;
 
         public string Title
         {
@@ -44,12 +51,6 @@ namespace Kelly.App.ViewModels
 
         public ICommand ShowHistory { get; set; }
 
-        public DateTime StartTime
-        {
-            get { return _startTime; }
-            set { _startTime = value; }
-        }
-
         public void SetTitle(string text)
         {
             Title = text;
@@ -57,7 +58,33 @@ namespace Kelly.App.ViewModels
 
         public void Reset()
         {
-            _startTime = DateTime.Now;
+            VoteSet = new VoteSet
+                          {
+                              StartTime = DateTime.Now
+                          };
         }
+
+        public void HandleShowHistoryCommand()
+        {
+            VoteSet voteSet = VoteSet;
+            voteSet.Title = Title;
+            VoteSetRepo.Instance.Ensure(voteSet);
+            ShowHistory.Execute(null);
+        }
+
+        public void HandleResetCountersCommand()
+        {
+            PutVoteSetInHistory();
+            Reset();
+        }
+
+        private void PutVoteSetInHistory()
+        {
+            VoteSet.EndNow();
+            VoteSetRepo.Instance.Ensure(VoteSet);
+            Reset();
+        }
+
+
     }
 }

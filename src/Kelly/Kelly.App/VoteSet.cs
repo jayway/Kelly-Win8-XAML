@@ -35,5 +35,10 @@ namespace Kelly.App
             EndTime = DateTime.Now;
             HasEnded = true;
         }
+
+        public VoteSet GetClone()
+        {
+            return MemberwiseClone() as VoteSet;
+        }
     }
 }
