@@ -28,7 +28,7 @@ namespace Kelly.App
         [DataMember]
         public int GreenCount { get; set; }
 
-        public string IsRunningText { get { return !HasEnded ? Res.Instance.GetString("IsRunningText") : string.Empty;  } }
+        public string EndTimeString { get { return !HasEnded ? Res.Instance.GetString("IsRunningText") : EndTime.ToString(); } }
 
         public void EndNow()
         {

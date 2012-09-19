@@ -1,22 +1,22 @@
 ﻿<common:LayoutAwarePage
-    x:Name="pageRoot"
-    x:Class="Kelly.App.HistoryPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:common="using:Kelly.App.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ViewModels="using:Kelly.App.ViewModels" mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance Type=ViewModels:HistoryPageVM, IsDesignTimeCreatable=True}">
+    xmlns:ViewModels="using:Kelly.App.ViewModels"
+    x:Name="pageRoot"
+    x:Class="Kelly.App.HistoryPage"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=ViewModels:HistoryPageVM}">
 
-    <Page.Resources>
-
+    <common:LayoutAwarePage.Resources>
         <!--
             Collection of grouped items displayed by this page, bound to a subset
             of the complete item list because items in groups cannot be virtualized
         -->
         <ViewModels:HistoryPageVM x:Name="_viewModel"/>
-    </Page.Resources>
+    </common:LayoutAwarePage.Resources>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -29,6 +29,50 @@
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                <VisualState x:Name="FullScreenPortrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Padding">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="96,137,10,56"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+                <!--
+                    The back button and title have different styles when snapped, and the list representation is substituted
+                    for the grid displayed in all other view states
+                -->
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemListView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
         <!-- Horizontal scrolling grid used in most view states -->
         <GridView
@@ -88,18 +132,13 @@
                                 Text="{Binding StartTime}" 
                                 Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" 
                                 Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" Margin="15,0,15,5"/>
-                            <Grid Margin="15,0,15,15">
-                                <TextBlock x:Name="EndTime" 
-                            		Text="{Binding EndTime}" 
-                            		Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" 
-                            		Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" 
-                                    HorizontalAlignment="Left"/>
-                                <TextBlock x:Name="IsRunningText" 
-                            		Text="{Binding IsRunningText}" 
-                            		Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" 
-                            		Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" 
-                                    HorizontalAlignment="Right"/>
-                            </Grid>
+                            <TextBlock 
+                                x:Name="EndTime" 
+                                Margin="15,0,15,15"
+                            	Text="{Binding EndTimeString}" 
+                            	Foreground="{StaticResource ListViewItemOverlaySecondaryForegroundThemeBrush}" 
+                            	Style="{StaticResource CaptionTextStyle}" TextWrapping="NoWrap" 
+                                HorizontalAlignment="Left"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -110,7 +149,7 @@
             </GridView.ItemTemplate>
 
             <GridView.ItemsPanel>
-                <ItemsPanelTemplate>                        
+                <ItemsPanelTemplate>
                     <VariableSizedWrapGrid/>
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
@@ -164,48 +203,5 @@
                        IsHitTestVisible="false" Style="{StaticResource PageHeaderTextStyle}"/>
         </Grid>
 
-        <VisualStateManager.VisualStateGroups>
-
-            <!-- Visual states reflect the application's view state -->
-            <VisualStateGroup x:Name="ApplicationViewStates">
-                <VisualState x:Name="FullScreenLandscape"/>
-                <VisualState x:Name="Filled"/>
-
-                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
-                <VisualState x:Name="FullScreenPortrait">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Padding">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="96,137,10,56"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-
-                <!--
-                    The back button and title have different styles when snapped, and the list representation is substituted
-                    for the grid displayed in all other view states
-                -->
-                <VisualState x:Name="Snapped">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
-                        </ObjectAnimationUsingKeyFrames>
-
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemListView" Storyboard.TargetProperty="Visibility">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                        </ObjectAnimationUsingKeyFrames>
-                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="itemGridView" Storyboard.TargetProperty="Visibility">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
-                        </ObjectAnimationUsingKeyFrames>
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
     </Grid>
 </common:LayoutAwarePage>
