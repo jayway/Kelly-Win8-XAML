@@ -126,11 +126,20 @@
   <data name="IsRunningText" xml:space="preserve">
     <value>Is running</value>
   </data>
-  <data name="MainPageAppBar_CountReset.Text" xml:space="preserve">
+  <data name="MainPageAppBar_VotesHasBeenResetText.Text" xml:space="preserve">
     <value>All counters reset</value>
   </data>
   <data name="MainPage_PoweredBy.Text" xml:space="preserve">
     <value>powered by</value>
+  </data>
+  <data name="MainPage_ResetVotesText.Text" xml:space="preserve">
+    <value>Clear votes</value>
+  </data>
+  <data name="MainPage_ShowHistoryText.Text" xml:space="preserve">
+    <value>Show history</value>
+  </data>
+  <data name="MainPage_ShowSummaryText.Text" xml:space="preserve">
+    <value>Show current votes</value>
   </data>
   <data name="SettingsCtrl_VoteTitleHeader.Text" xml:space="preserve">
     <value>Vote Title</value>

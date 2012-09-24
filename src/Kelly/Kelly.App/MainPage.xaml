@@ -25,25 +25,36 @@
         </Storyboard>
     </Page.Resources>
     <common:LayoutAwarePage.BottomAppBar>
-        <AppBar>
+        <AppBar Height="88">
             <AppBar.Resources>
                 <Style TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
                     <!--<Setter Property="FontSize" Value="24"/>-->
+                    <Setter Property="Height" Value="63"/>
                 </Style>
             </AppBar.Resources>
             <Grid>
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                    <Button x:Name="ShowSummaryButton" Content="∑" Tapped="ShowSummaryButton_OnTapped"/>
-                    <Button x:Name="ResetCountButton" Content="&#xE10A;" Tapped="ResetCountButton_OnTapped"/>
+                    <StackPanel Orientation="Vertical">                        
+                        <Button x:Name="ShowSummaryButton" Content="∑" Tapped="ShowSummaryButton_OnTapped"/>
+                        <TextBlock TextWrapping="Wrap" x:Uid="MainPage_ShowSummaryText" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Button x:Name="ResetCountButton" 
+                    		Content="&#xE10A;" Tapped="ResetCountButton_OnTapped"/>
+                        <TextBlock TextWrapping="Wrap" x:Uid="MainPage_ResetVotesText" HorizontalAlignment="Center"/>
+                    </StackPanel>
                     <TextBlock x:Name="textBlock" 
-        				x:Uid="MainPageAppBar_CountReset" TextWrapping="Wrap" Text="TextBlock" Style="{StaticResource SubheaderTextStyle}" 
+        				x:Uid="MainPageAppBar_VotesHasBeenResetText" TextWrapping="Wrap" Text="TextBlock" Style="{StaticResource SubheaderTextStyle}" 
         				Margin="0,10,0,0" Opacity="0"/>
                 </StackPanel>
+                <StackPanel Orientation="Vertical">
 
-                <Button x:Name="ShowHistoryButton" Content="" 
-                        HorizontalAlignment="Right" 
-                        Command="{Binding ShowHistory}"
-                        Tapped="ShowHistoryButton_OnTapped"/>
+                    <Button x:Name="ShowHistoryButton" Content="&#xE1EF;" 
+                		HorizontalAlignment="Right" 
+                		Command="{Binding ShowHistory}"
+                		Tapped="ShowHistoryButton_OnTapped"/>
+                    <TextBlock TextWrapping="Wrap" x:Uid="MainPage_ShowHistoryText" HorizontalAlignment="Center"/>
+                </StackPanel>
 
             </Grid>
         </AppBar>
