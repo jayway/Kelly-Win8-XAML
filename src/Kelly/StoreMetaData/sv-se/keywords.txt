@@ -1,1 +1,1 @@
-vote, voting, rate, rating, feedback
+rösta, betygsätt, feedback
