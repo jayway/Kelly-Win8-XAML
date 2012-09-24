@@ -36,6 +36,8 @@ namespace Kelly.App
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
             //var sampleDataGroups = SampleDataSource.GetGroups((String)navigationParameter);
             //this.DefaultViewModel["Groups"] = sampleDataGroups;
+
+            pageTitle.Focus(FocusState.Pointer);
         }
 
         private async void ShowSummaryButton_OnTapped(object sender, TappedRoutedEventArgs e)
