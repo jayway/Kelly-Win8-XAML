@@ -1,2 +1,2 @@
-Collect feedback on any topic.
-Simple red/yellow/green choices.
+Samla in feedback på vilket ämne som helst.
+Enkla svarsalternativ i rött/gult/grönt.
