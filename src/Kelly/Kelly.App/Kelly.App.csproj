@@ -12,7 +12,6 @@
     <DefaultLanguage>sv-SE</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Kelly.App_StoreKey.pfx</PackageCertificateKeyFile>
     <ExpressionBlendVersion>5.0.30709.0</ExpressionBlendVersion>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <PackageCertificateThumbprint>945B7732B137EBA1028B76959E64A8F4B010A3F4</PackageCertificateThumbprint>
@@ -25,6 +24,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
+    <PackageCertificateKeyFile>Kelly.App_StoreKey.pfx</PackageCertificateKeyFile>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -33,6 +33,7 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <PackageCertificateKeyFile>Kelly.App_StoreKey.pfx</PackageCertificateKeyFile>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -160,7 +161,7 @@
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\DarkGray.png" />
-    <None Include="Package.StoreAssociation.xml" />
+    <None Include="Package.StoreAssociation2.xml" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
