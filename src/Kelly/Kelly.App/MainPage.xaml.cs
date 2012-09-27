@@ -63,6 +63,7 @@ namespace Kelly.App
         private string CreateSummaryText()
         {
             var builder = new StringBuilder();
+
             ForEachVoteButton(ctrl => builder.AppendLine(string.Format("{0}: {1}", ctrl.Name, ctrl.NbrVotes)));
             return builder.ToString();
         }
@@ -83,6 +84,12 @@ namespace Kelly.App
         }
 
         private void ForEachVoteButton(Action<VoteButtonCtrl> forEachAction)
+        {
+            ForEachVoteButtonIn(forEachAction, votingGridNormal);
+            ForEachVoteButtonIn(forEachAction, votingGridSnapped);
+        }
+
+        private static void ForEachVoteButtonIn(Action<VoteButtonCtrl> forEachAction, Grid votingGrid)
         {
             foreach (var child in votingGrid.Children)
             {
