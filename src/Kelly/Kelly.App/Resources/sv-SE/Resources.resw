@@ -126,11 +126,20 @@
   <data name="IsRunningText" xml:space="preserve">
     <value>Är igång nu</value>
   </data>
-  <data name="MainPageAppBar_CountReset.Text" xml:space="preserve">
+  <data name="MainPageAppBar_VotesHasBeenResetText.Text" xml:space="preserve">
     <value>Räknarna nollställdes</value>
   </data>
   <data name="MainPage_PoweredBy" xml:space="preserve">
     <value>skapat av</value>
+  </data>
+  <data name="MainPage_ResetVotesText.Text" xml:space="preserve">
+    <value>Avsluta och nollställ</value>
+  </data>
+  <data name="MainPage_ShowHistoryText.Text" xml:space="preserve">
+    <value>Visa historik</value>
+  </data>
+  <data name="MainPage_ShowSummaryText.Text" xml:space="preserve">
+    <value>Visa ställning</value>
   </data>
   <data name="SettingsCtrl_VoteTitleHeader.Text" xml:space="preserve">
     <value>Rubrik</value>

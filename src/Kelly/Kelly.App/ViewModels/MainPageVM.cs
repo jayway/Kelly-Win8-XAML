@@ -13,15 +13,11 @@ namespace Kelly.App.ViewModels
         {
             ShowHistory = new ShowHistoryCommand();
 
-            var voteTitle = ApplicationData.Current.RoamingSettings.Values[Constants.VOTE_TITLE_SETTINGS_KEY] as string;
-            if (string.IsNullOrEmpty(voteTitle))
-            {
-                voteTitle = Res.Instance.GetString("DefaultVoteTitle");
-            }
-            
-            
-            Title = voteTitle;
+            InitRunningSet();
+        }
 
+        private void InitRunningSet()
+        {
             var runningSet = VoteSetRepo.Instance.AllSets.FirstOrDefault(x => !x.HasEnded);
             if (runningSet == null)
             {
@@ -29,26 +25,41 @@ namespace Kelly.App.ViewModels
             }
             else
             {
-                StartTime = runningSet.StartTime;
+                VoteSet = runningSet;
+                Title = runningSet.Title;
             }
         }
 
+        private void SetTitleFromSettingsOrDefault()
+        {
+            var voteTitle = ApplicationData.Current.RoamingSettings.Values[Constants.VOTE_TITLE_SETTINGS_KEY] as string;
+            if (string.IsNullOrEmpty(voteTitle))
+            {
+                voteTitle = Res.Instance.GetString("DefaultVoteTitle");
+            }
+            Title = voteTitle;
+        }
+
+        public VoteSet VoteSet
+        {
+            get { return _voteSet; }
+            set { SetProperty(ref _voteSet, value); }
+        }
+
         private string _title;
-        private DateTime _startTime;
+        private VoteSet _voteSet;
 
         public string Title
         {
             get { return _title; }
-            set { SetProperty(ref _title, value); }
+            set
+            {
+                SetProperty(ref _title, value);
+                VoteSet.Title = value;
+            }
         }
 
         public ICommand ShowHistory { get; set; }
-
-        public DateTime StartTime
-        {
-            get { return _startTime; }
-            set { _startTime = value; }
-        }
 
         public void SetTitle(string text)
         {
@@ -57,7 +68,30 @@ namespace Kelly.App.ViewModels
 
         public void Reset()
         {
-            _startTime = DateTime.Now;
+            VoteSet = new VoteSet
+                          {
+                              StartTime = DateTime.Now
+                          };
+            SetTitleFromSettingsOrDefault();
+        }
+
+        public void HandleResetCountersCommand()
+        {
+            PutVoteSetInHistory();
+            Reset();
+        }
+
+        private void PutVoteSetInHistory()
+        {
+            VoteSet.EndNow();
+            VoteSetRepo.Instance.Ensure(VoteSet);
+            Reset();
+        }
+
+        public void HandleShowHistoryCommand()
+        {
+            VoteSetRepo.Instance.Ensure(VoteSet);
+            ShowHistory.Execute(null);
         }
     }
 }

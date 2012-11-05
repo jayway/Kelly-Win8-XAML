@@ -1,0 +1,1 @@
+App för att samla in röster. Justerbar titel, röster ges som rött/fult/grönt.

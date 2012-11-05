@@ -36,6 +36,8 @@ namespace Kelly.App
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
             //var sampleDataGroups = SampleDataSource.GetGroups((String)navigationParameter);
             //this.DefaultViewModel["Groups"] = sampleDataGroups;
+
+            pageTitle.Focus(FocusState.Pointer);
         }
 
         private async void ShowSummaryButton_OnTapped(object sender, TappedRoutedEventArgs e)
@@ -70,17 +72,8 @@ namespace Kelly.App
 
         private void ResetCountButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            PutVoteSetInHistory();
-            ForEachVoteButton(ctrl => ctrl.Reset());
+            _viewModel.HandleResetCountersCommand();
             ShowAndFadeOutCountersResetText.Begin();
-        }
-
-        private void PutVoteSetInHistory()
-        {
-            var voteSet = GetCurrentVoteSet();
-            voteSet.EndNow();
-            _viewModel.Reset();
-            VoteSetRepo.Instance.Ensure(voteSet);
         }
 
         private void ForEachVoteButton(Action<VoteButtonCtrl> forEachAction)
@@ -107,21 +100,8 @@ namespace Kelly.App
 
         private void RunShowHistoryCommandSinceICommandWontWork()
         {
-            VoteSet voteSet = GetCurrentVoteSet();
-            VoteSetRepo.Instance.Ensure(voteSet);
-            _viewModel.ShowHistory.Execute(null);
+            _viewModel.HandleShowHistoryCommand();
         }
 
-        private VoteSet GetCurrentVoteSet()
-        {
-            return new VoteSet
-                       {
-                           StartTime = _viewModel.StartTime,
-                           RedCount = Red.NbrVotes,
-                           YellowCount = Yellow.NbrVotes,
-                           GreenCount = Green.NbrVotes,
-                           Title = _viewModel.Title
-                       };
-        }
     }
 }

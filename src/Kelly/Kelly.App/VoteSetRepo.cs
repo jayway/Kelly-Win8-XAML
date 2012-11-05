@@ -24,11 +24,12 @@ namespace Kelly.App
 
         public void Ensure(VoteSet voteSet)
         {
-            if (_sets.ContainsKey(voteSet.StartTime))
+            var setToAdd = voteSet.GetClone();
+            if (_sets.ContainsKey(setToAdd.StartTime))
             {
-                _sets.Remove(voteSet.StartTime);
+                _sets.Remove(setToAdd.StartTime);
             }
-            _sets.Add(voteSet.StartTime, voteSet);
+            _sets.Add(setToAdd.StartTime, setToAdd);
         }
 
         public IEnumerable<VoteSet> AllSets { get { return _sets.Values; } }
