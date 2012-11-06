@@ -47,15 +47,15 @@
         				x:Uid="MainPageAppBar_VotesHasBeenResetText" TextWrapping="Wrap" Text="TextBlock" Style="{StaticResource SubheaderTextStyle}" 
         				Margin="0,10,0,0" Opacity="0"/>
                 </StackPanel>
-                <StackPanel Orientation="Vertical">
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
 
-                    <Button x:Name="ShowHistoryButton" Content="&#xE1EF;" 
-                		HorizontalAlignment="Right" 
+                        <Button x:Name="ShowHistoryButton" Content="&#xE1EF;" 
                 		Command="{Binding ShowHistory}"
                 		Tapped="ShowHistoryButton_OnTapped"/>
-                    <TextBlock TextWrapping="Wrap" x:Uid="MainPage_ShowHistoryText" HorizontalAlignment="Center"/>
+                        <TextBlock TextWrapping="Wrap" x:Uid="MainPage_ShowHistoryText" HorizontalAlignment="Center"/>
+                    </StackPanel>
                 </StackPanel>
-
             </Grid>
         </AppBar>
     </common:LayoutAwarePage.BottomAppBar>
