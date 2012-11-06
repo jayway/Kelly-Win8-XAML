@@ -33,7 +33,7 @@ namespace Kelly.App
         public VoteData GetVoteData(int count, Color fill)
         {
             var percentage = count / (double)GetTotal();
-            return new VoteData { VotePercentage = percentage, Fill = new SolidColorBrush(fill) };
+            return new VoteData { VotePercentage = percentage, Fill = new SolidColorBrush(fill), NbrVotes = count };
         }
 
         private int GetTotal()

@@ -15,13 +15,16 @@
     <UserControl.Resources>
         <UserControls:DoubleToStarConverter x:Key="DoubleToStarConverter"/>
     </UserControl.Resources>
-
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="{Binding RestPercentage, Converter={StaticResource DoubleToStarConverter}, Mode=OneWay}"/>
             <RowDefinition Height="{Binding VotePercentage, Converter={StaticResource DoubleToStarConverter}}"/>
         </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" 
+                   Text="{Binding NbrVotes}" Style="{StaticResource HeaderTextStyle}"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10"/>
         <Rectangle Grid.Row="1" Fill="{Binding Fill}"/>
     </Grid>
+
+
 </UserControl>

@@ -17,9 +17,11 @@ namespace Kelly.App
             {
                 VotePercentage = 0.7;
                 Fill = new SolidColorBrush(Colors.Yellow);
+                NbrVotes = 17;
             }
         }
 
+        public int NbrVotes { get; set; }
         public double VotePercentage { get; set; }
         public double RestPercentage { get { return 1 - VotePercentage; } }
         public Brush Fill { get; set; }
