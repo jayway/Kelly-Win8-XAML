@@ -153,8 +153,10 @@
                 </TransitionCollection>
             </UserControls:SettingsCtrl.Transitions>
         </UserControls:SettingsCtrl>
-        <Grid x:Name="SummaryGrid" Grid.ColumnSpan="2" Background="#7FB9B9B9" Grid.RowSpan="2" Tapped="SummaryGrid_Tapped">
-        	<Border x:Name="SummaryBorder" BorderThickness="0" Margin="120" Background="#FF343434"/>
+        <Grid x:Name="SummaryGrid" Grid.ColumnSpan="2" Background="#CAFFFFFF" Grid.RowSpan="2" Tapped="SummaryGrid_Tapped" Visibility="Collapsed">
+        	<Border x:Name="SummaryBackground" BorderThickness="0" Margin="0,20" VerticalAlignment="Center" Height="300" Background="#FF3A3A3A">
+        		<Border x:Name="SummaryBorder" BorderThickness="0" Width="600" Margin="20"/>
+        	</Border>
 		</Grid>
 
         <VisualStateManager.VisualStateGroups>
