@@ -42,9 +42,14 @@ namespace Kelly.App
 
         private async void ShowSummaryButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            var summaryText = CreateSummaryText();
-            var dialog = new MessageDialog(summaryText, Res.Instance.GetString("SummaryTitle"));
-            await dialog.ShowAsync();
+            //var summaryText = CreateSummaryText();
+            //var dialog = new MessageDialog(summaryText, Res.Instance.GetString("SummaryTitle"));
+            //await dialog.ShowAsync();
+
+            var ctrl = new VoteSummaryCtrl();
+            ctrl.DataContext = _viewModel.VoteSet;
+            SummaryBorder.Child = ctrl;
+            SummaryGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
 
         public void ShowSettingsPanel()
@@ -65,6 +70,7 @@ namespace Kelly.App
         private string CreateSummaryText()
         {
             var builder = new StringBuilder();
+
             ForEachVoteButton(ctrl => builder.AppendLine(string.Format("{0}: {1}", ctrl.Name, ctrl.NbrVotes)));
             return builder.ToString();
         }
@@ -76,6 +82,12 @@ namespace Kelly.App
         }
 
         private void ForEachVoteButton(Action<VoteButtonCtrl> forEachAction)
+        {
+            ForEachVoteButtonIn(forEachAction, votingGridNormal);
+            ForEachVoteButtonIn(forEachAction, votingGridSnapped);
+        }
+
+        private static void ForEachVoteButtonIn(Action<VoteButtonCtrl> forEachAction, Grid votingGrid)
         {
             foreach (var child in votingGrid.Children)
             {
@@ -94,6 +106,11 @@ namespace Kelly.App
         private void RunShowHistoryCommandSinceICommandWontWork()
         {
             _viewModel.HandleShowHistoryCommand();
+        }
+
+        private void SummaryGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            SummaryGrid.Visibility = Visibility.Collapsed;
         }
 
     }
