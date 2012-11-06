@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Kelly.App.Resources;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
 
 namespace Kelly.App
 {
@@ -27,6 +29,17 @@ namespace Kelly.App
 
         [DataMember]
         public int GreenCount { get; set; }
+
+        public VoteData GetVoteData(int count, Color fill)
+        {
+            var percentage = count / (double)GetTotal();
+            return new VoteData { VotePercentage = percentage, Fill = new SolidColorBrush(fill) };
+        }
+
+        private int GetTotal()
+        {
+            return RedCount + YellowCount + GreenCount;
+        }
 
         public string EndTimeString { get { return !HasEnded ? Res.Instance.GetString("IsRunningText") : EndTime.ToString(); } }
 

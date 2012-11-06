@@ -42,9 +42,14 @@ namespace Kelly.App
 
         private async void ShowSummaryButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            var summaryText = CreateSummaryText();
-            var dialog = new MessageDialog(summaryText, Res.Instance.GetString("SummaryTitle"));
-            await dialog.ShowAsync();
+            //var summaryText = CreateSummaryText();
+            //var dialog = new MessageDialog(summaryText, Res.Instance.GetString("SummaryTitle"));
+            //await dialog.ShowAsync();
+
+            var ctrl = new VoteSummaryCtrl();
+            ctrl.DataContext = _viewModel.VoteSet;
+            SummaryBorder.Child = ctrl;
+            SummaryGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
 
         public void ShowSettingsPanel()
@@ -101,6 +106,11 @@ namespace Kelly.App
         private void RunShowHistoryCommandSinceICommandWontWork()
         {
             _viewModel.HandleShowHistoryCommand();
+        }
+
+        private void SummaryGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            SummaryGrid.Visibility = Visibility.Collapsed;
         }
 
     }

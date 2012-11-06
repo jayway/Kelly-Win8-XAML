@@ -152,6 +152,9 @@
                 </TransitionCollection>
             </UserControls:SettingsCtrl.Transitions>
         </UserControls:SettingsCtrl>
+        <Grid x:Name="SummaryGrid" Grid.ColumnSpan="2" Background="#7FB9B9B9" Grid.RowSpan="2" Tapped="SummaryGrid_Tapped">
+        	<Border x:Name="SummaryBorder" BorderThickness="0" Margin="120" Background="#FF343434"/>
+		</Grid>
 
         <VisualStateManager.VisualStateGroups>
 

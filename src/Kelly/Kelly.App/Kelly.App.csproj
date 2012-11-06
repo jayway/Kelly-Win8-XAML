@@ -12,7 +12,7 @@
     <DefaultLanguage>sv-SE</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ExpressionBlendVersion>5.0.30709.0</ExpressionBlendVersion>
+    <ExpressionBlendVersion>5.0.30924.0</ExpressionBlendVersion>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <PackageCertificateThumbprint>945B7732B137EBA1028B76959E64A8F4B010A3F4</PackageCertificateThumbprint>
   </PropertyGroup>
@@ -127,9 +127,17 @@
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Resources\Res.cs" />
+    <Compile Include="UserControls\DoubleToStarConverter.cs" />
     <Compile Include="UserControls\SettingsCtrl.xaml.cs">
       <DependentUpon>SettingsCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\VoteSummaryColumnCtrl.xaml.cs">
+      <DependentUpon>VoteSummaryColumnCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VoteSummaryCtrl.xaml.cs">
+      <DependentUpon>VoteSummaryCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\VoteSummaryVM.cs" />
     <Compile Include="ViewModels\HistoryPageVM.cs" />
     <Compile Include="ViewModels\MainPageVM.cs" />
     <Compile Include="UserControls\VoteButtonCtrl.xaml.cs">
@@ -137,6 +145,7 @@
     </Compile>
     <Compile Include="ViewModels\Navigate.cs" />
     <Compile Include="ViewModels\ShowHistoryCommand.cs" />
+    <Compile Include="VoteData.cs" />
     <Compile Include="VoteSet.cs" />
     <Compile Include="VoteSetRepo.cs" />
   </ItemGroup>
@@ -161,6 +170,14 @@
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\DarkGray.png" />
+    <Page Include="UserControls\VoteSummaryColumnCtrl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\VoteSummaryCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <None Include="Package.StoreAssociation.xml" />
     <None Include="Package.StoreAssociation2.xml" />
   </ItemGroup>
