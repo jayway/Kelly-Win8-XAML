@@ -20,8 +20,13 @@
         <Grid.Resources>
         <Style TargetType="local:VoteSummaryColumnCtrl">
             <Setter Property="Margin" Value="10,0"/>
+            <!--<Setter Property="Grid.Row" Value="1"/>-->
         </Style>
         </Grid.Resources>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

@@ -17,7 +17,8 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="{Binding RestPercentage, Converter={StaticResource DoubleToStarConverter}, Mode=OneWay}"/>
+            <RowDefinition Height="{Binding RestPercentage, Converter={StaticResource DoubleToStarConverter}, Mode=OneWay}"
+                           MinHeight="50"/>
             <RowDefinition Height="{Binding VotePercentage, Converter={StaticResource DoubleToStarConverter}}"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" 
