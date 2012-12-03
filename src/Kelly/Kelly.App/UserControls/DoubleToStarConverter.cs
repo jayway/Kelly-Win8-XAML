@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using Windows.UI.Xaml;
 
 namespace Kelly.App.UserControls
@@ -11,8 +8,16 @@ namespace Kelly.App.UserControls
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            double val = (double)value;
-            return new GridLength(val, GridUnitType.Star);
+            try
+            {
+                double val = (double)value;
+                return new GridLength(val, GridUnitType.Star);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return new GridLength(0.0001, GridUnitType.Star);
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
