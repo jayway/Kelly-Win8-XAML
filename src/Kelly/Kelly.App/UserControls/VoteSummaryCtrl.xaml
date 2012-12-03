@@ -29,7 +29,6 @@
         </Grid.ColumnDefinitions>
         <local:VoteSummaryColumnCtrl Grid.Column="0" DataContext="{Binding VoteData[0]}"/>
         <local:VoteSummaryColumnCtrl Grid.Column="1" DataContext="{Binding VoteData[1]}"/>
-
         <local:VoteSummaryColumnCtrl Grid.Column="2" DataContext="{Binding VoteData[2]}"/>
     </Grid>
 </UserControl>

@@ -42,14 +42,10 @@ namespace Kelly.App
 
         private async void ShowSummaryButton_OnTapped(object sender, TappedRoutedEventArgs e)
         {
-            //var summaryText = CreateSummaryText();
-            //var dialog = new MessageDialog(summaryText, Res.Instance.GetString("SummaryTitle"));
-            //await dialog.ShowAsync();
-
             var ctrl = new VoteSummaryCtrl();
             ctrl.DataContext = _viewModel.VoteSet;
             SummaryBorder.Child = ctrl;
-            SummaryGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            SummaryGrid.Visibility = Visibility.Visible;
         }
 
         public void ShowSettingsPanel()
@@ -65,14 +61,6 @@ namespace Kelly.App
         {
             settingsCtrl.Visibility = Visibility.Collapsed;
             this.PointerPressed -= new PointerEventHandler(HideSettingsPanel);
-        }
-
-        private string CreateSummaryText()
-        {
-            var builder = new StringBuilder();
-
-            ForEachVoteButton(ctrl => builder.AppendLine(string.Format("{0}: {1}", ctrl.Name, ctrl.NbrVotes)));
-            return builder.ToString();
         }
 
         private void ResetCountButton_OnTapped(object sender, TappedRoutedEventArgs e)
@@ -108,7 +96,7 @@ namespace Kelly.App
             _viewModel.HandleShowHistoryCommand();
         }
 
-        private void SummaryGrid_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        private void SummaryGrid_Tapped(object sender, TappedRoutedEventArgs e)
         {
             SummaryGrid.Visibility = Visibility.Collapsed;
         }
