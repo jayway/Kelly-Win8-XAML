@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="38586JayLabs.Rater" Publisher="CN=63259567-5BF2-4F4F-BEE2-21C67D4F46C6" Version="1.0.0.5" />
+  <Identity Name="38586JayLabs.Rater" Publisher="CN=63259567-5BF2-4F4F-BEE2-21C67D4F46C6" Version="1.0.0.7" />
   <Properties>
     <DisplayName>Rater</DisplayName>
     <PublisherDisplayName>JayLabs</PublisherDisplayName>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Kelly.App.App">
-      <VisualElements DisplayName="Rater" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Rating app for collecting red/yellow/green votes." ForegroundText="light" BackgroundColor="#464646">
+      <VisualElements DisplayName="Vote Collector" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="Rating app for collecting red/yellow/green votes." ForegroundText="light" BackgroundColor="#464646">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#464646" />
         <InitialRotationPreference>

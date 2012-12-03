@@ -353,6 +353,8 @@
     <MainPackageIdentityName>38586JayLabs.Rater</MainPackageIdentityName>
     <ReservedNames>
       <ReservedName>Rater</ReservedName>
+      <ReservedName>Vote Collector</ReservedName>
+      <ReservedName>Feedbacker</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
@@ -363,7 +365,7 @@
   <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/d87129ee-fed3-475c-b178-c253bde9d0ec">
     <PackageInfo>
       <PackageArchitecture>neutral</PackageArchitecture>
-      <PackageMaxArchitectureVersion>1.0.0.4</PackageMaxArchitectureVersion>
+      <PackageMaxArchitectureVersion>1.0.0.5</PackageMaxArchitectureVersion>
     </PackageInfo>
   </PackageInfoList>
 </StoreAssociation>
