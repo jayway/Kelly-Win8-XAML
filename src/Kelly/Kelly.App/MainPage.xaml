@@ -158,13 +158,13 @@
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Border HorizontalAlignment="Stretch"
-                        Grid.Row="1" 
-                        x:Name="SummaryBorder" BorderThickness="0" Margin="20"/>
-
+                        Grid.Column="1" 
+                        x:Name="SummaryBorder" BorderThickness="0" Margin="20">
+                    </Border>
                 </Grid>
         	</Border>
 		</Grid>
