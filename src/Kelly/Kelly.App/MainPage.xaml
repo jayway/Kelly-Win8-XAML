@@ -135,9 +135,15 @@
                     <Setter Property="Margin" Value="10,10,10,10"/>
                 </Style>
             </Grid.Resources>
-            <UserControls:VoteButtonCtrl x:Name="voteButtonCtrl" Background="Red" Grid.RowSpan="1" Grid.ColumnSpan="3"/>
-            <UserControls:VoteButtonCtrl x:Name="voteButtonCtrl1" Background="Yellow" Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="3"/>
-            <UserControls:VoteButtonCtrl x:Name="voteButtonCtrl2" Background="Green" Grid.Row="2" Grid.RowSpan="1" Grid.ColumnSpan="3"/>
+            <UserControls:VoteButtonCtrl Background="Red" 
+                                         Grid.Row="0" Grid.RowSpan="1" Grid.ColumnSpan="3" 
+                                         NbrVotes="{Binding VoteSet.RedCount, Mode=TwoWay}"/>
+            <UserControls:VoteButtonCtrl Background="Yellow" 
+                                         Grid.Row="1" Grid.RowSpan="1" Grid.ColumnSpan="3" 
+                                         NbrVotes="{Binding VoteSet.YellowCount, Mode=TwoWay}"/>
+            <UserControls:VoteButtonCtrl Background="Green" 
+                                         Grid.Row="2" Grid.RowSpan="1" Grid.ColumnSpan="3"
+                                         NbrVotes="{Binding VoteSet.GreenCount, Mode=TwoWay}"/>
         </Grid>
 
         <UserControls:SettingsCtrl
